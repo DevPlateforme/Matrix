@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#game{
+
+ background:black;
+ height: 200px;
+ width: 500px;
+}
+
+
+#hero{
+
+    width: 20px;
+
+    height: 50px;
+     
+    background-color: red;
+
+    position: absolute;
+
+    top: 150px;
+
+    left: 30px;
+
+    
+}
+
+#opponent{
+
+    width: 20px;
+
+    height: 50px;
+
+    background-color: blue;
+
+    position: absolute;
+
+    top: 150px;
+
+    left:  420px;
+
+    opacity: 0;
+  
+}
+
+
+
+#lazer{
+
+    background: red;
+
+    height: 5px;
+
+    width: 15px;
+
+    position: absolute;
+
+    top: 170px;
+    
+}
+
+
+
+.animate{
+    animation: jump 500ms;
+}
+
+
+@keyFrames opponentMovement{
+
+    0%{left: 400px;}
+    100%{left:-40px;}
+}
+
+@keyFrames jump{
+    
+    0%{ top: 150px }
+    30%{ top: 60px }
+    70%{ top: 60px }
+    100%{ top: 150px }
+
+}
+
+@keyFrames lazerAnimation{
+
+    0%{ left: 0px}
+    30%{ left: 30vw}
+    70%{ left: 60vw}
+    100%{ left: 100vw} 
+}
+
+
+@keyFrames turboAnimation{
+
+    0%{ left: 0px}
+    30%{ left: 30vw}
+    70%{ left: 60vw}
+    100%{ left: 100vw} 
+
+}
+
+
+@keyFrames earthQuakeAnimation{
+
+    0%{ left: 0px}
+    30%{ left: 30vw}
+    70%{ left: 60vw}
+    100%{ left: 100vw} 
+
+}
+
+
+
+
+
+
