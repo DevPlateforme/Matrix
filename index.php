@@ -7,20 +7,11 @@
 
     <h1>
 
-        Choisis ton héros
+      Bienvenue, Neo
+
+
+      <a href="game.php"><button>Se connecter à la matrice</button></a>
        
-        <form action='db/game.php' method='post'>
-
-            <select>
-
-               <option>Dragor</option>
-               <option>Leila</option>
-  
-            </select>
-
-            <input type='submit' value='Jouer'>
-
-      </form>
  
 
 

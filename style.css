@@ -3,48 +3,135 @@
     margin: 0;
 }
 
+body{
+
+    background: grey;
+}
 #game{
 
- background:black;
- height: 200px;
- width: 500px;
+   position: absolute;
+   top: 10vh;
+   background:black;
+   height: 60vh;
+   width: 100vw;
+
+   display: flex; 
+
+   align-items: flex-end;
+
 }
 
+#gameDiv{
+
+   height: 70%;
+
+   width: 100%;
+    
+}
 
 #hero{
 
-    width: 20px;
+    width: 5%;
 
-    height: 50px;
+    height: 30%;
      
-    background-color: red;
+    background-color:purple;
 
     position: absolute;
 
-    top: 150px;
+    bottom: 0px;
 
-    left: 30px;
+    left: 2vw;
 
+}
+
+#score{
+
+    position: absolute;
+
+    top: 10px;
     
+    left: 450px;
+}
+
+
+#speedShield{
+
+    opacity: 0.5;
+
+    background: blue;
+
+    height: 35%;
+
+    position: absolute;
+
+    left: 0px;
+
+    bottom: 0px;
+
+    width: 9%;
+
+    border-radius: 20px 20px 0 0;
+
 }
 
 #opponent{
 
     width: 20px;
 
-    height: 50px;
+    height: 25%;
 
     background-color: blue;
 
     position: absolute;
 
-    top: 150px;
+    bottom: 0px;
 
-    left:  420px;
+    left: 99vw;
 
-    opacity: 0;
+    opacity: 0;    
   
 }
+
+#opponent2{
+
+    width: 20px;
+
+    height: 25%;
+
+    background-color: red;
+
+    position: absolute;
+
+    bottom: 0px;
+
+     left: 99vw;
+     
+     opacity: 0;
+
+  
+}
+
+#opponent2Bullet{
+    
+    position: absolute;
+
+    background: red;
+
+    height: 5px;
+
+    width: 15px;
+
+
+    bottom: 50px;
+
+
+    right: 25vw;
+
+    opacity: 0
+
+}
+
 
 
 
@@ -58,10 +145,12 @@
 
     position: absolute;
 
-    top: 170px;
-    
-}
+    bottom: 50px;
 
+    left: 1vw;
+    
+
+}
 
 
 .animate{
@@ -69,19 +158,90 @@
 }
 
 
+
+.lazerAnimation{
+
+    animation: lazerAnimation 1s linear;
+
+
+}
+
+#boss{
+
+    background: purple;
+
+    height: 60%;
+
+    width: 10%;
+
+    position: absolute;
+
+    top: 40%;
+
+    right: 5%;
+
+    z-index: 4;
+}
+
+
+#bossSoldier{
+
+    background: red;
+
+    height: 30%;
+
+    width: 5%;
+
+    position: absolute;
+
+    top: 70%;
+
+    right: 5%;
+
+    z-index: 4;
+
+    opacity: 0;
+    
+
+}
+
+
+
+
+#fireBall{
+
+    background: orange;
+
+    width: 5%;
+
+    height: 10%;
+
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 0px;
+
+}
+
+
+
+
+
+
 @keyFrames opponentMovement{
 
-    0%{left: 400px;}
-    100%{left:-40px;}
+    0%{left: 99.9vw;}
+    100%{left:0vw;}
 }
 
 @keyFrames jump{
     
-    0%{ top: 150px }
-    30%{ top: 60px }
-    70%{ top: 60px }
-    100%{ top: 150px }
-
+    0%{ bottom: 0% }
+    30%{ bottom: 50% }
+    70%{ bottom: 50% }
+    100%{ bottom: 0% }
 }
 
 @keyFrames lazerAnimation{
@@ -90,6 +250,26 @@
     30%{ left: 30vw}
     70%{ left: 60vw}
     100%{ left: 100vw} 
+}
+
+
+@keyFrames flyingAnimation{
+
+    
+    0%{ bottom: 0px }
+    30%{ bottom: 50px }
+    70%{ bottom: 50px }
+    100%{ bottom: 0px }
+
+}
+
+@keyFrames disksAnimation{
+
+    0%{ left: 0px}
+    30%{ left: 30%}
+    70%{ left: 60%}
+    100%{ left: 100%} 
+
 }
 
 
@@ -103,7 +283,9 @@
 }
 
 
-@keyFrames earthQuakeAnimation{
+
+
+@keyFrames animalTransformationAnimation{
 
     0%{ left: 0px}
     30%{ left: 30vw}
@@ -111,6 +293,55 @@
     100%{ left: 100vw} 
 
 }
+
+
+@keyFrames earthQuakeAnimation{
+
+    0%{ top: 150px}
+    70%{ top: 130px}
+    100%{ top: 150px} 
+
+}
+
+
+@keyFrames fireBallAnimation{
+
+    0%{ right: 0px}
+    30%{ right: 30vw}
+    70%{ right: 60vw}
+    100%{ right: 100vw} 
+
+}
+
+
+
+
+
+@keyFrames bossFlight{
+
+    0%{ top: 40%}
+    30%{ top: 30%}
+    100%{ top: 20%} 
+}
+
+
+@keyFrames bossLanding{
+
+    0%{ top: 20%}
+    30%{ top: 30%}
+    100%{ top: 40%} 
+}
+
+
+@keyFrames bossSoldiersRun{
+
+
+    0%{left: 99.9vw;}
+    100%{left:0vw}
+}
+
+
+ 
 
 
 
