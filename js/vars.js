@@ -98,3 +98,10 @@ var shotReady = true;
 
 
 
+
+//timeouts
+
+
+
+
+var autoOpponent1ReapTimeout;

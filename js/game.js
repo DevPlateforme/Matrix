@@ -1,8 +1,7 @@
 
   window.onload = function(){
 
-     nextOpponent1Apparition();
-     nextOpponent2Apparition();
+     nextOpponentApparition();
      setInterval(increaseScore , 150);
      setInterval(checkIfDead, speed/100);    
 
@@ -15,15 +14,19 @@
   }     
   
 
-  function opponentApparition(){
+  function opponent1Apparition(){
 
-    if(score >= 1000){
+   alert('sending an opponent 1')
+
+   /* 
+   
+   if(score >= 1000){
 
       clearInterval(opponentRunInterval);
 
       launchBossLevel();
     }
-
+   */
     
     //set opacity of the opponent to 1
 
@@ -37,17 +40,12 @@
       opponent.style.background = 'blue';
 
 
-      opponent.style.animation = 'opponentMovement ' + speed + 'ms linear';
+      opponent.style.animation = 'opponentMovement 2000ms linear';
       
-      let currentSpeed = speed;
 
 
-      if(speed >= 300){
+      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},2000);
 
-        speed -= 50;
-      }
-
-      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' }, currentSpeed);
       
     }
 
@@ -117,7 +115,7 @@
              if((heroTop + heroHeight) <= opponentTop){
 
 
-                 alert("vous avez été tués par un bomber!!" );
+                 //alert("vous avez été tués par un bomber!!" );
 
                  window.location.reload();
 
@@ -125,7 +123,7 @@
 
               }else {
 
-                  alert("you just dodged a bomber!!");
+                  //alert("you just dodged a bomber!!");
 
                }
 
@@ -136,11 +134,13 @@
 
                  if( (heroTop + heroHeight ) <= opponent2Top){
 
-                    alert("vous avez été tués par un soldat!!" );
+                    //alert("vous avez été tués par un soldat!!" );
+
+                    window.location.reload()
 
                  }else {
 
-                  alert("you just dodged a soldier!!");
+                  //alert("you just dodged a soldier!!");
 
                 }
 
@@ -148,7 +148,7 @@
                
            } else if(parseInt(opponent2Left) <= 50){
 
-               alert("vous avez été tués!!!");
+               //alert("vous avez été tués!!!");
 
                window.location.reload();
 
@@ -159,7 +159,7 @@
             if( (heroTop + heroHeight ) <= opponent2BulletTop){
 
               
-               alert("vous avez été tués par une balle!!!" );
+               //alert("vous avez été tués par une balle!!!" );
 
                
                window.location.reload();
@@ -169,7 +169,7 @@
             } else {
 
 
-              alert('you just dodged a bullet!!');
+              //alert('you just dodged a bullet!!');
 
               clearInterval(opponent2BulletInterval);
 
@@ -200,13 +200,13 @@
              lazer.style.background = 'yellow' ;
 
              
-             nextOpponent1Apparition();
+             nextOpponentApparition();
 
              
              setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '', lazer.style.opacity = 0; lazer.style.animation = ''}, 50);
 
              
-             alert('Vous avez perdu!! Vous avez fait exploser un camicase, vous avez commis des dégâts dans la ville!');
+             //alert('Vous avez perdu!! Vous avez fait exploser un camicase, vous avez commis des dégâts dans la ville!');
 
          } 
 
@@ -217,7 +217,7 @@
              opponent2.style.background = 'orange' ;
 
 
-             setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponent2Apparition()}, 50);
+             setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponentApparition()}, 50);
 
          } 
 
@@ -242,14 +242,14 @@
     
                  boss.style.background = 'yellow' ;
 
-                 alert('boss hit' + 'points de vie restants : ' + bossLifePoints);
+                 //alert('boss hit' + 'points de vie restants : ' + bossLifePoints);
 
                  bossLifePoints -= 1;
 
 
               } else {
 
-                alert('Vous avez vaincu le démon!!!!');
+                //alert('Vous avez vaincu le démon!!!!');
 
                 window.location.reload();
 
@@ -367,15 +367,17 @@
 
      function opponent2Apparition(){
 
+      alert('sending an opponent 2')
+
+
         opponent2.style.opacity = '1';
         opponent2Bullet.style.opacity = '1';
-        opponent2.style.animation = 'opponentMovement 1.5s linear';
+        opponent2.style.animation = 'opponentMovement 2s linear';
         opponent2BulletInterval = setInterval(function(){
         
   
         updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 40;
         
-        console.log("bullet :" + updatedOpponent2BulletLeft );
 
 
         opponent2Bullet.style.left = updatedOpponent2BulletLeft + 'px';
@@ -386,43 +388,35 @@
 
         }, 30);
 
-        setTimeout(function(){clearInterval(opponent2BulletInterval) ; opponent2.style.opacity = '0' ; opponent2.style.animation = '' ; opponent2Bullet.style.left = '99vw'; opponent2Bullet.style.opacity = '0'; nextOpponent2Apparition() }, 1500 );       
+        setTimeout(function(){clearInterval(opponent2BulletInterval) ; opponent2.style.opacity = '0' ; opponent2.style.animation = '' ; opponent2Bullet.style.left = '99vw'; opponent2Bullet.style.opacity = '0'}, 2000 );       
         
+
     }
 
-    
-    function nextOpponent1Apparition(){
- 
+
+
+
+
+    function nextOpponentApparition(){
+
+       //either the opponent 1 or the opponent 2 is going to appear
+
+       var opponent1App = function(){ opponent1Apparition()};
+       var opponent2App = function(){ opponent2Apparition()};
+
+
+       var opponentsArray = [opponent1App, opponent2App];
+
+
        setTimeout(function(){
 
-          opponentApparition();
-          
+             
+          opponentsArray[Math.floor(Math.random()*2)]();
 
-        }, Math.floor(Math.random()*5000) + opponent1MinApparitionTime );
 
-        if(opponent1MinApparitionTime > 1500){
+       }, 3000);
 
-              opponent1MinApparitionTime -= 500;
 
-        }        
-      
+
+
     }
-
-
-
-   function nextOpponent2Apparition(){
-  
-         setTimeout(function(){
-
-          opponent2Apparition();
-
-         }, Math.floor(Math.random()*10000) + opponent2MinApparitionTime);
-
-
-         if(opponent2MinApparitionTime > 3000){
-
-            opponent2MinApparitionTime -= 500;
-        
-         } 
-
-   }
