@@ -1,28 +1,17 @@
 
- 
-
   window.onload = function(){
 
-    nextOpponent1Apparition();
-
-
-    nextOpponent2Apparition();
-
-
+     nextOpponent1Apparition();
+     nextOpponent2Apparition();
      setInterval(increaseScore , 150);
-
      setInterval(checkIfDead, speed/100);    
-
 
   }
   
 
   function increaseScore(){
-
     score += 10;
-
     scoreHTML.innerHTML = score;
-
   }     
   
 
@@ -63,7 +52,7 @@
     }
 
 
- function jump(){
+    function jump(){
 
       hero.classList.add('animate');
 
@@ -87,7 +76,7 @@
 
          lazer.style.opacity = '1';
 
-         lazer.style.animation = 'lazerAnimation 400ms linear';
+         lazer.style.animation = 'lazerAnimation 500ms linear';
 
          //CHECK LAZER COLLISION
 
@@ -106,18 +95,16 @@
     function checkIfDead(){
       
        let heroTop = window.getComputedStyle(hero).getPropertyValue('top');
+       let heroHeight = window.getComputedStyle(hero).getPropertyValue('height');
 
        let heroLeft = window.getComputedStyle(hero).getPropertyValue('left');
 
        let opponentTop = window.getComputedStyle(opponent).getPropertyValue('top');
-
        let opponentLeft = window.getComputedStyle(opponent).getPropertyValue('left');
-
        let opponent2Left = window.getComputedStyle(opponent2).getPropertyValue('left');
-
+       let opponent2Top = window.getComputedStyle(opponent2).getPropertyValue('top');
        let opponent2BulletLeft = window.getComputedStyle(opponent2Bullet).getPropertyValue('left');
-
-
+       let opponent2BulletTop = window.getComputedStyle(opponent2Bullet).getPropertyValue('top');
        let bossSoldierLeft = window.getComputedStyle(bossSoldier).getPropertyValue('left');
 
 
@@ -127,71 +114,109 @@
 
            if(parseInt(opponentLeft) <= 50){
 
+             if((heroTop + heroHeight) <= opponentTop){
 
-               alert("vous avez été tués par une bombe!!!");
 
-               window.location.reload();
+                 alert("vous avez été tués par un bomber!!" );
+
+                 window.location.reload();
+
+
+
+              }else {
+
+                  alert("you just dodged a bomber!!");
+
+               }
+
+
 
                
-           } else if(parseInt(heroTop) >= 200 && parseInt(bossSoldierLeft) <= 50){
+           } else if(parseInt(bossSoldierLeft) <= 50){
+
+                 if( (heroTop + heroHeight ) <= opponent2Top){
+
+                    alert("vous avez été tués par un soldat!!" );
+
+                 }else {
+
+                  alert("you just dodged a soldier!!");
+
+                }
 
 
-               console.log('soldier collision!!!');
-
-               alert("vous avez été tué par un soldat!!!");
-
-               window.location.reload();
                
            } else if(parseInt(opponent2Left) <= 50){
-
 
                alert("vous avez été tués!!!");
 
                window.location.reload();
 
                
-           } else if(parseInt(heroTop) >= 200 && parseInt(opponent2BulletLeft) <= 50 ){
+           } else if( parseInt(opponent2BulletLeft) <= 50 ){
 
+                
+            if( (heroTop + heroHeight ) <= opponent2BulletTop){
 
-               alert("vous avez été tués par une balle!!!" + parseInt(heroTop));
-
-
-               window.location.reload();
+              
+               alert("vous avez été tués par une balle!!!" );
 
                
-           }
+               window.location.reload();
+
+
+
+            } else {
+
+
+              alert('you just dodged a bullet!!');
+
+              clearInterval(opponent2BulletInterval);
+
+              opponent2Bullet.style.left = '99vw';
+
+              
+            }
+               
+        }
           
-     }
+    }
 
 
    function checkLazerCollision(){
        
-       let lazerLeft = window.getComputedStyle(lazer).getPropertyValue('left');
-       let opponentLeft = window.getComputedStyle(opponent).getPropertyValue('left');
-       let opponent2Left = window.getComputedStyle(opponent2).getPropertyValue('left');
-       let bossSoldierLeft = window.getComputedStyle(bossSoldier).getPropertyValue('left');
-       let bossLeft =  window.getComputedStyle(boss).getPropertyValue('left');
+         let lazerLeft = window.getComputedStyle(lazer).getPropertyValue('left');
+         let opponentLeft = window.getComputedStyle(opponent).getPropertyValue('left');
+         let opponent2Left = window.getComputedStyle(opponent2).getPropertyValue('left');
+         let bossSoldierLeft = window.getComputedStyle(bossSoldier).getPropertyValue('left');
+         let bossLeft =  window.getComputedStyle(boss).getPropertyValue('left');
+
 
 
          if( parseInt(opponentLeft) <= parseInt(lazerLeft)  ){
                  
              console.log('lazer lazer lazer lazer');
-
              opponent.style.background = 'orange' ;
-
              lazer.style.background = 'yellow' ;
 
+             
              nextOpponent1Apparition();
 
              
              setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '', lazer.style.opacity = 0; lazer.style.animation = ''}, 50);
 
+             
+             alert('Vous avez perdu!! Vous avez fait exploser un camicase, vous avez commis des dégâts dans la ville!');
+
          } 
+
+
 
           if( parseInt(opponent2Left) <= parseInt(lazerLeft)  ){
                  
              opponent2.style.background = 'orange' ;
-             
+
+
              setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponent2Apparition()}, 50);
 
          } 
@@ -250,10 +275,11 @@
 
     function bossFlight(){
 
-      //The boss waits 5 seconds. Then, his soldiers run for 20 seconds. 
-      //Then, the boss goes on the ground, makes a shot, stand for 10 seconds then go back flying.
+       //The boss waits 5 seconds. Then, his soldiers run for 20 seconds. 
+       
+       //Then, the boss goes on the ground, makes a shot, stand for 10 seconds then go back flying.
 
-     //When it goes flying, it sends opponents running.
+       //When it goes flying, it sends opponents running.
        
        //soldier run for 30 seconds
         
@@ -266,15 +292,10 @@
 
     function bossSoldiersRun(){
 
-
-         console.log("soldiers are running at you");
-
-         soldiersRunInterval = setInterval( function(){
-
+          console.log("soldiers are running at you");
+          soldiersRunInterval = setInterval( function(){
           bossSoldier.style.opacity = '1';
-
           bossSoldier.style.animation = 'bossSoldiersRun 1s linear';
- 
           console.log("run!!!");
  
           
@@ -291,14 +312,14 @@
 
           }, 7000);
       
-        }
+   }
 
     
     function bossLanding(){
 
         //The boss shoots
 
-        console.log("landing!");
+         console.log("landing!");
 
          boss.style.top = '40%';
 
@@ -314,12 +335,10 @@
     function bossShot(){
 
        let fireBallDiv = document.createElement('div');
-
-       fireBallDiv.setAttribute('id', 'fireBallDiv');
-
-       document.getElementById("gameDiv").append(fireBallDiv);
-
+       fireBallDiv.setAttribute('id', 'fireBallDiv');  
+       document.getElementById("gameDiv").append(fireBallDiv);  
        fireBallDiv.style.animation = 'fireBallAnimation 1s linear';
+
 
     }
 
@@ -349,16 +368,12 @@
      function opponent2Apparition(){
 
         opponent2.style.opacity = '1';
-            
         opponent2Bullet.style.opacity = '1';
-
         opponent2.style.animation = 'opponentMovement 1.5s linear';
-
-        
         opponent2BulletInterval = setInterval(function(){
         
   
-        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 70;
+        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 40;
         
         console.log("bullet :" + updatedOpponent2BulletLeft );
 
@@ -391,32 +406,23 @@
 
         }        
       
-      }
+    }
 
 
-      function nextOpponent2Apparition(){
-       
-       
+
+   function nextOpponent2Apparition(){
+  
          setTimeout(function(){
 
           opponent2Apparition();
 
-        }, Math.floor(Math.random()*5000) + opponent2MinApparitionTime );
+         }, Math.floor(Math.random()*10000) + opponent2MinApparitionTime);
 
-        if(opponent2MinApparitionTime > 3000){
 
-              opponent2MinApparitionTime -= 500;
-        }
+         if(opponent2MinApparitionTime > 3000){
+
+            opponent2MinApparitionTime -= 500;
         
+         } 
 
-      }
-
-
-    
-
-
-
-
-
-
-
+   }

@@ -154,7 +154,7 @@ body{
 
 
 .animate{
-    animation: jump 500ms;
+    animation: jump 800ms linear;
 }
 
 
@@ -239,8 +239,8 @@ body{
 @keyFrames jump{
     
     0%{ bottom: 0% }
-    30%{ bottom: 50% }
-    70%{ bottom: 50% }
+    30%{ bottom: 60% }
+    70%{ bottom: 60% }
     100%{ bottom: 0% }
 }
 
