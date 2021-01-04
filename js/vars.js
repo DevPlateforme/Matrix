@@ -105,3 +105,10 @@ var shotReady = true;
 
 
 var autoOpponent1ReapTimeout;
+
+
+
+//collision
+
+
+var opponent2Shot = false;

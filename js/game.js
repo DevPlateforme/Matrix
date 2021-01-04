@@ -193,69 +193,27 @@
 
 
 
-         if( parseInt(opponentLeft) <= parseInt(lazerLeft)  ){
-                 
-             console.log('lazer lazer lazer lazer');
-             opponent.style.background = 'orange' ;
-             lazer.style.background = 'yellow' ;
-
-             
-             nextOpponentApparition();
-
-             
-             setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '', lazer.style.opacity = 0; lazer.style.animation = ''}, 50);
-
-             
-             //alert('Vous avez perdu!! Vous avez fait exploser un camicase, vous avez commis des dégâts dans la ville!');
-
-         } 
-
-
 
           if( parseInt(opponent2Left) <= parseInt(lazerLeft)  ){
                  
              opponent2.style.background = 'orange' ;
 
+             if(opponent2Shot == false ){
 
-             setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponentApparition()}, 50);
+               opponent2Shot = true;
+               
+               
+               setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponentApparition() }, 50);
+
+
+
+             }
 
          } 
 
-         if( parseInt(bossSoldierLeft) <= parseInt(lazerLeft)  ){
-                 
-                 console.log('boss soldier hit');
-    
-                 bossSoldier.style.background = 'orange' ;
-                 
-                 setTimeout(function(){bossSoldier.style.opacity = 0; bossSoldier.style.animation = ''}, 100);
-    
-         }
-
+      
          
-            
-         if( parseInt(bossLeft) <= parseInt(lazerLeft)  ){
-
-              if(bossLifePoints > 1){
-
-                
-                 lazer.style.animation = '';
-    
-                 boss.style.background = 'yellow' ;
-
-                 //alert('boss hit' + 'points de vie restants : ' + bossLifePoints);
-
-                 bossLifePoints -= 1;
-
-
-              } else {
-
-                //alert('Vous avez vaincu le démon!!!!');
-
-                window.location.reload();
-
-              }
-                 
-         } 
+      
 
     }
 
@@ -367,7 +325,11 @@
 
      function opponent2Apparition(){
 
-      alert('sending an opponent 2')
+      alert('sending an opponent 2');
+
+      //init the var used to avoid repetition (bullet collision function)
+ 
+        opponent2Shot = false;
 
 
         opponent2.style.opacity = '1';
@@ -414,7 +376,7 @@
           opponentsArray[Math.floor(Math.random()*2)]();
 
 
-       }, 3000);
+       }, 1000);
 
 
 
