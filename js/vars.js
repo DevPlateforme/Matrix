@@ -11,7 +11,7 @@ var bomber = {index: 2,  onScreen: false};
 var opponentsArray = [ agent, shooter, bomber];
 
 
-
+var lastOpponentSent = opponent;
 
 
 var hero = document.getElementById('hero');

@@ -7,11 +7,20 @@ body{
 
     background: grey;
 }
+
+canvas{
+
+    height: 100%;
+
+    width: 100%;
+}
+
+
 #game{
 
    position: absolute;
    top: 10vh;
-   background:black;
+   background:white;
    height: 60vh;
    width: 100vw;
 
@@ -33,15 +42,23 @@ body{
 
     width: 5%;
 
-    height: 30%;
+    height: 33%;
      
-    background-color:purple;
-
     position: absolute;
 
     bottom: 0px;
 
     left: 2vw;
+
+
+}
+
+
+#heroCanvas{
+
+  height: 100%;
+
+  width: 100%;
 
 }
 
@@ -58,6 +75,8 @@ body{
 #speedShield{
 
     opacity: 0.5;
+
+    display: none;
 
     background: blue;
 
@@ -77,30 +96,28 @@ body{
 
 #opponent{
 
-    width: 20px;
+    width: 4.5%;
 
-    height: 25%;
-
-    background-color: blue;
-
+    height: 20%;
+     
     position: absolute;
 
     bottom: 0px;
 
     left: 99vw;
 
-    opacity: 0;    
+    opacity: 0;  
+    
+    
   
 }
 
 #opponent2{
 
-    width: 20px;
+    width: 4.5%;
 
     height: 25%;
-
-    background-color: red;
-
+     
     position: absolute;
 
     bottom: 0px;
@@ -109,7 +126,6 @@ body{
      
      opacity: 0;
 
-  
 }
 
 #opponent2Bullet{
@@ -123,7 +139,7 @@ body{
     width: 15px;
 
 
-    bottom: 50px;
+    bottom: 10%;
 
 
     right: 25vw;
@@ -218,7 +234,6 @@ body{
 
     height: 10%;
 
-
     position: absolute;
 
     top: 50%;
@@ -229,7 +244,13 @@ body{
 
 
 
+#opponent1canvas{
 
+    height: 100%;
+
+    width: 100%;
+
+}
 
 
 @keyFrames opponentMovement{
@@ -314,8 +335,6 @@ body{
     100%{ right: 100vw} 
 
 }
-
-
 
 
 

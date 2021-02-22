@@ -1,9 +1,11 @@
 
   window.onload = function(){
 
+     animateCharacters();
      nextOpponentApparition();
      setInterval(increaseScore , 150);
      setInterval(checkIfDead, speed/100);    
+
 
   }
   
@@ -16,36 +18,10 @@
 
   function opponent1Apparition(){
 
-   alert('sending an opponent 1')
-
-   /* 
-   
-   if(score >= 1000){
-
-      clearInterval(opponentRunInterval);
-
-      launchBossLevel();
-    }
-   */
-    
-    //set opacity of the opponent to 1
-
-    //set the speed of the animation
-
-
-        
-    
       opponent.style.opacity = '1';
-
-      opponent.style.background = 'blue';
-
-
-      opponent.style.animation = 'opponentMovement 2000ms linear';
+      opponent.style.animation = 'opponentMovement 1800ms linear';
       
-
-
-      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},2000);
-
+      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},1800);
       
     }
 
@@ -59,7 +35,6 @@
         hero.classList.remove('animate');
       }, 500);
     
-  
    }
     
 
@@ -92,30 +67,30 @@
 
     function checkIfDead(){
       
-       let heroTop = window.getComputedStyle(hero).getPropertyValue('top');
-       let heroHeight = window.getComputedStyle(hero).getPropertyValue('height');
-
-       let heroLeft = window.getComputedStyle(hero).getPropertyValue('left');
-
-       let opponentTop = window.getComputedStyle(opponent).getPropertyValue('top');
-       let opponentLeft = window.getComputedStyle(opponent).getPropertyValue('left');
-       let opponent2Left = window.getComputedStyle(opponent2).getPropertyValue('left');
-       let opponent2Top = window.getComputedStyle(opponent2).getPropertyValue('top');
-       let opponent2BulletLeft = window.getComputedStyle(opponent2Bullet).getPropertyValue('left');
-       let opponent2BulletTop = window.getComputedStyle(opponent2Bullet).getPropertyValue('top');
-       let bossSoldierLeft = window.getComputedStyle(bossSoldier).getPropertyValue('left');
+       let heroTop = parseInt(window.getComputedStyle(hero).getPropertyValue('top'));
+       let heroHeight = parseInt(window.getComputedStyle(hero).getPropertyValue('height')); 
+       let heroLeft = parseInt(window.getComputedStyle(hero).getPropertyValue('left'));
+       let opponentTop = parseInt(window.getComputedStyle(opponent).getPropertyValue('top'));
+       let opponentLeft = parseInt(window.getComputedStyle(opponent).getPropertyValue('left'));
+       let opponent2Left = parseInt(window.getComputedStyle(opponent2).getPropertyValue('left'));
+       let opponent2Top = parseInt(window.getComputedStyle(opponent2).getPropertyValue('top'));
+       let opponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left'));
+       let opponent2BulletTop = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('top'));
 
 
           //if the opponent is colliding the player, meaning if they are at the same  height, and same width
              
              //50px equals the space from the wall, plus the width
 
-           if(parseInt(opponentLeft) <= 50){
+           if(opponentLeft <= 50){
 
-             if((heroTop + heroHeight) <= opponentTop){
+             if((heroTop + heroHeight) >= opponentTop){
 
 
-                 //alert("vous avez été tués par un bomber!!" );
+                 alert("vous avez été tués par un bomber!!" );
+
+                 alert('indeed ==> hero bottom =' + (heroTop + heroHeight) + ' opponent ' + opponentTop);
+
 
                  window.location.reload();
 
@@ -123,53 +98,31 @@
 
               }else {
 
-                  //alert("you just dodged a bomber!!");
 
                }
 
 
 
                
-           } else if(parseInt(bossSoldierLeft) <= 50){
+           } else if(opponent2Left <= 50){
 
-                 if( (heroTop + heroHeight ) <= opponent2Top){
-
-                    //alert("vous avez été tués par un soldat!!" );
-
-                    window.location.reload()
-
-                 }else {
-
-                  //alert("you just dodged a soldier!!");
-
-                }
-
-
-               
-           } else if(parseInt(opponent2Left) <= 50){
-
-               //alert("vous avez été tués!!!");
+               alert("vous avez été tués!!!");
 
                window.location.reload();
 
                
-           } else if( parseInt(opponent2BulletLeft) <= 50 ){
+           } else if( opponent2BulletLeft <= 50 ){
 
                 
-            if( (heroTop + heroHeight ) <= opponent2BulletTop){
+             if( (heroTop + heroHeight ) >= opponent2BulletTop){
 
-              
-               //alert("vous avez été tués par une balle!!!" );
-
+                 alert('vous etes morts par balle!!');
                
-               window.location.reload();
-
-
+                 window.location.reload();
 
             } else {
 
 
-              //alert('you just dodged a bullet!!');
 
               clearInterval(opponent2BulletInterval);
 
@@ -196,20 +149,28 @@
 
           if( parseInt(opponent2Left) <= parseInt(lazerLeft)  ){
                  
-             opponent2.style.background = 'orange' ;
 
              if(opponent2Shot == false ){
 
-               opponent2Shot = true;
+                  opponent2Shot = true;
                
                
-               setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponentApparition() }, 50);
+                   setTimeout(function(){opponent2.style.opacity = 0; opponent2.style.animation = ''; lazer.style.opacity = 0; lazer.style.animation = ''; nextOpponentApparition() }, 50);
 
 
 
              }
 
-         } 
+         } else if( parseInt(opponentLeft) <= parseInt(lazerLeft) ){
+
+               
+                alert('game over!! le bomber a fait explosé la ville!!');
+
+                window.location.reload();
+
+
+
+         }
 
       
          
@@ -325,8 +286,6 @@
 
      function opponent2Apparition(){
 
-      alert('sending an opponent 2');
-
       //init the var used to avoid repetition (bullet collision function)
  
         opponent2Shot = false;
@@ -338,17 +297,15 @@
         opponent2BulletInterval = setInterval(function(){
         
   
-        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 40;
+        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 12;
         
 
 
         opponent2Bullet.style.left = updatedOpponent2BulletLeft + 'px';
 
 
-        console.log('on');
 
-
-        }, 30);
+        }, 15);
 
         setTimeout(function(){clearInterval(opponent2BulletInterval) ; opponent2.style.opacity = '0' ; opponent2.style.animation = '' ; opponent2Bullet.style.left = '99vw'; opponent2Bullet.style.opacity = '0'}, 2000 );       
         
