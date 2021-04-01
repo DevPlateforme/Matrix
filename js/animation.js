@@ -71,7 +71,6 @@ var index2 = 0;
 
 setInterval(function(){
 
-    index2++;
 
 
     if( index2 >= 13){
@@ -81,10 +80,13 @@ setInterval(function(){
     }
 
     opponent1Context.clearRect(0, 0, opponent1Canvas.width, opponent1Canvas.height);
+
+    index2++;
+
     opponent1Context.drawImage(opponent1Images[index2], 0, 0, opponent1Canvas.width, opponent1Canvas.height);
 
     
-} , 60);
+} , 40);
 
 
 
@@ -114,6 +116,9 @@ var index3 = 0;
 
 setInterval(function(){
 
+    opponent2Context.clearRect(0, 0, opponent2Canvas.width, opponent2Canvas.height);
+
+    
     index3++;
 
 
@@ -123,11 +128,10 @@ setInterval(function(){
 
     }
 
-    opponent2Context.clearRect(0, 0, opponent2Canvas.width, opponent2Canvas.height);
     opponent2Context.drawImage(opponent2Images[index3], 0, 0, opponent2Canvas.width, opponent2Canvas.height);
 
     
-   } , 150);
+   } , 130);
 
 
 

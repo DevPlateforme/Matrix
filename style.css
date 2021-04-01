@@ -40,14 +40,10 @@ canvas{
 
 #hero{
 
-    width: 5%;
-
-    height: 33%;
-     
+    width: 4.5%;
+    height: 25%;  
     position: absolute;
-
-    bottom: 0px;
-
+    bottom: -20px;
     left: 2vw;
 
 
@@ -57,7 +53,6 @@ canvas{
 #heroCanvas{
 
   height: 100%;
-
   width: 100%;
 
 }
@@ -65,9 +60,7 @@ canvas{
 #score{
 
     position: absolute;
-
     top: 10px;
-    
     left: 450px;
 }
 
@@ -75,75 +68,47 @@ canvas{
 #speedShield{
 
     opacity: 0.5;
-
     display: none;
-
     background: blue;
-
     height: 35%;
-
     position: absolute;
-
     left: 0px;
-
     bottom: 0px;
-
     width: 9%;
-
     border-radius: 20px 20px 0 0;
 
 }
 
 #opponent{
 
-    width: 4.5%;
-
-    height: 20%;
-     
+    width: 3.5%;
+    height: 17.5%;
     position: absolute;
-
     bottom: 0px;
-
     left: 99vw;
-
     opacity: 0;  
     
-    
-  
 }
 
 #opponent2{
 
     width: 4.5%;
-
-    height: 25%;
-     
+    height: 25%;  
     position: absolute;
-
     bottom: 0px;
-
-     left: 99vw;
-     
-     opacity: 0;
+    left: 99vw;    
+    opacity: 0;
 
 }
 
 #opponent2Bullet{
     
     position: absolute;
-
     background: red;
-
     height: 5px;
-
     width: 15px;
-
-
     bottom: 10%;
-
-
     right: 25vw;
-
     opacity: 0
 
 }
@@ -154,17 +119,11 @@ canvas{
 #lazer{
 
     background: red;
-
     height: 5px;
-
     width: 15px;
-
     position: absolute;
-
-    bottom: 50px;
-
+    bottom: 12.5%;
     left: 1vw;
-    
 
 }
 

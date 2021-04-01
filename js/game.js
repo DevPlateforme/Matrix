@@ -19,9 +19,9 @@
   function opponent1Apparition(){
 
       opponent.style.opacity = '1';
-      opponent.style.animation = 'opponentMovement 1800ms linear';
+      opponent.style.animation = 'opponentMovement 1250ms linear';
       
-      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},1800);
+      setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},1250);
       
     }
 
@@ -49,7 +49,7 @@
 
          lazer.style.opacity = '1';
 
-         lazer.style.animation = 'lazerAnimation 500ms linear';
+         lazer.style.animation = 'lazerAnimation 300ms linear';
 
          //CHECK LAZER COLLISION
 
@@ -57,7 +57,7 @@
 
          setTimeout( function(){lazer.style.animation = '' ; lazer.style.opacity = '0';  shotReady = true} 
 
-         , 600 );
+         , 300 );
 
 
         }      
@@ -297,7 +297,7 @@
         opponent2BulletInterval = setInterval(function(){
         
   
-        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - 12;
+        updatedOpponent2BulletLeft = parseInt(window.getComputedStyle(opponent2Bullet).getPropertyValue('left')) - (window.innerWidth/60);
         
 
 
@@ -305,7 +305,7 @@
 
 
 
-        }, 15);
+        }, 10);
 
         setTimeout(function(){clearInterval(opponent2BulletInterval) ; opponent2.style.opacity = '0' ; opponent2.style.animation = '' ; opponent2Bullet.style.left = '99vw'; opponent2Bullet.style.opacity = '0'}, 2000 );       
         
