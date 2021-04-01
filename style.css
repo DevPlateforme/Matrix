@@ -123,7 +123,8 @@ canvas{
     width: 15px;
     position: absolute;
     bottom: 12.5%;
-    left: 1vw;
+    left: 7vw;
+    opacity: 0;
 
 }
 
@@ -228,7 +229,7 @@ canvas{
 
 @keyFrames lazerAnimation{
 
-    0%{ left: 0px}
+    0%{ left: 7vw}
     30%{ left: 30vw}
     70%{ left: 60vw}
     100%{ left: 100vw} 
