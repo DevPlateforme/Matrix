@@ -18,7 +18,7 @@ canvas{
 
 #game{
 
-   position: absolute;
+   position: fixed;
    top: 10vh;
    background:white;
    height: 60vh;
@@ -213,6 +213,13 @@ canvas{
 }
 
 
+#mobilePad{
+
+    display: none;
+
+}
+
+
 @keyFrames opponentMovement{
 
     0%{left: 99.9vw;}
@@ -325,7 +332,76 @@ canvas{
  
 
 
+#pivotDiv{
+
+  display: none;
+  color: white;
+
+}
+
+
+@media all and (min-width: 400px) and (max-width: 800px){
+
+
+  #hero{
+
+    bottom:-4vh;
+
+  }
+
+
+  
+#mobilePad{
+
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100vw;
+   height: 10vh;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+
+
+.mobileBtn{
+    
+    height: 80%;
+    width: 30%;
+    border-radius: 10px;
+
+}
+
+
+#score{
+
+  font-size: 1.5vw;
+}
 
 
 
 
+}
+
+@media all and (max-width: 400px){
+
+
+    #pivotDiv{
+        position: absolute;
+        z-index: 12;
+        top:0;
+        left:0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        background: grey(0,0,0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+ 
+
+}

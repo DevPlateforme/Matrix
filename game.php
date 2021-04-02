@@ -3,7 +3,19 @@
   require 'header.php'
 
 ?>
+   
 
+   <div id='mobilePad'>
+
+        <button class='mobileBtn' onclick='jump()'>Jump</button>
+
+        <button class='mobileBtn' onclick='longRangeShot()'>Lazer</button>
+  
+   </div>
+
+   
+
+   <div id='pivotDiv'>Please, pivot your screen :)</div>
 
   <div id='game'>
 

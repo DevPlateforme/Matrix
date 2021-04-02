@@ -12,7 +12,7 @@
 
   function increaseScore(){
     score += 10;
-    scoreHTML.innerHTML = score;
+    scoreHTML.innerHTML = 'level: 1 </br>score :' + score + '/10000' ;
   }     
   
 
@@ -22,6 +22,14 @@
       opponent.style.animation = 'opponentMovement 1250ms linear';
       
       setTimeout(function(){opponent.style.opacity = 0; opponent.style.animation = '' ; nextOpponentApparition()},1250);
+
+      setTimeout(function(){
+         if(score > 10000){
+
+            alert('you won!!!')
+         }
+      },1250);
+
       
     }
 
@@ -43,7 +51,6 @@
 
       if(shotReady == true){
 
-        console.log('shot!!!');
 
          shotReady = false;
 
@@ -87,9 +94,7 @@
              if((heroTop + heroHeight) >= opponentTop){
 
 
-                 alert("vous avez été tués par un bomber!!" );
-
-                 alert('indeed ==> hero bottom =' + (heroTop + heroHeight) + ' opponent ' + opponentTop);
+                 //alert("You were killed by a bomber!!" );
 
 
                  window.location.reload();
@@ -106,7 +111,7 @@
                
            } else if(opponent2Left <= 50){
 
-               alert("vous avez été tués!!!");
+               //alert("you were killed!!!");
 
                window.location.reload();
 
@@ -116,7 +121,7 @@
                 
              if( (heroTop + heroHeight ) >= opponent2BulletTop){
 
-                 alert('vous etes morts par balle!!');
+                 //alert('you died after being shot!!');
                
                  window.location.reload();
 
@@ -164,7 +169,7 @@
          } else if( parseInt(opponentLeft) <= parseInt(lazerLeft) ){
 
                
-                alert('game over!! le bomber a fait explosé la ville!!');
+                alert('game over!! the bomber exploded and destroyed peace city!!');
 
                 window.location.reload();
 
@@ -183,7 +188,6 @@
   
    function launchBossLevel(){
 
-      console.log('le voila!! La bete à 3 têtes!!!');
       setTimeout( function(){ bossFlight() } , 1000);
 
 
@@ -211,11 +215,9 @@
 
     function bossSoldiersRun(){
 
-          console.log("soldiers are running at you");
           soldiersRunInterval = setInterval( function(){
           bossSoldier.style.opacity = '1';
           bossSoldier.style.animation = 'bossSoldiersRun 1s linear';
-          console.log("run!!!");
  
           
          setTimeout(function(){ bossSoldier.style.animation = '' ;  bossSoldier.style.opacity = '0'}, 1000);
@@ -238,7 +240,6 @@
 
         //The boss shoots
 
-         console.log("landing!");
 
          boss.style.top = '40%';
 

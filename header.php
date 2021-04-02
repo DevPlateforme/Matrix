@@ -1,4 +1,4 @@
-<html lang='fr' onclick='jump()'>
+<html lang='fr'>
 
 
 <head>
